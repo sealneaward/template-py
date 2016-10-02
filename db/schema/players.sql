@@ -1,8 +1,8 @@
--- Table: hustle_overall
+-- Table: players
 
--- DROP TABLE hustle_overall;
+-- DROP TABLE players;
 
-CREATE TABLE hustle_overall
+CREATE TABLE players
 (
   "PLAYER_ID" bigint NOT NULL,
   "PLAYER_NAME" text,
@@ -18,10 +18,9 @@ CREATE TABLE hustle_overall
   "DEF_RIM_FGM" bigint,
   "DEF_RIM_FGA" bigint,
   "DEF_RIM_FG_PCT" double precision,
-  CONSTRAINT hustle_overall_pkey PRIMARY KEY ("PLAYER_ID")
+  CONSTRAINT hustle_overall_pkey PRIMARY KEY ("PLAYER_ID"),
+  FOREIGN KEY ("TEAM_ID") REFERENCES
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE hustle_overall
-  OWNER TO root;

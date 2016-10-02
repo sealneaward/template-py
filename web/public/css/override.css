@@ -5,3 +5,7 @@ option:disabled,.dropdown-content li>a, .dropdown-content li>span {
 .select-wrapper input.select-dropdown{
     color: white;
 }
+
+.btn, .btn-large {
+    background-color: rebeccapurple;
+}

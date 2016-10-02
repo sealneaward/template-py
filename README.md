@@ -23,7 +23,7 @@ git clone https://github.com/sealneaward/template-py
 ```
 pip install virtualenv virtualenvwrapper
 virtualenv venv
-source venv/bin/activate
+venv/Scripts/activate
 pip install -r requirements.txt
 deactivate
 ```
@@ -39,29 +39,19 @@ deactivate
 | ------------- | ------------- | ----- |
 | nba    | root | root |
 
-![PostgreSQL Setup](img/schema.png)
+- open up pgAdmin3
+- add new conection (click on electric plug at top left corner)
+- enter in the configuration details
+![PostgreSQL Setup](img/add-server-pgadmin.png)
 
 - Use the .sql scripts in the db/schema folder to create the tables. Run as queries.
-
-# PyCharm IDE Setup
-- download and install [PyCharm](https://www.jetbrains.com/pycharm/)
-- you can get a free license from JetBrains if you are a [student](https://www.jetbrains.com/student/)
-- to add your venv as an interpreter follow these [instructions](https://www.jetbrains.com/help/pycharm/2016.1/adding-existing-virtual-environment.html)
-
-![VENV Interpreter Setup](img/interpreter.png)
-
-### PyCharm Debugging
-- click on the dropdown arrow ![Arrow](img/arrow.png) and select edit configurations
-- add a python configuration with the following settings
-
-![Configuration Setup](img/configuration.png)
 
 # Linux Setup
 - Install git if not already installed
 ```
 sudo apt-get install git
 ```
-- setup virtualenvironment in project folder [more documentation](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
+- setup virtual environment in project folder [more documentation](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
 ```
 sudo pip install virtualenv virtualenvwrapper
 virtualenv venv
@@ -74,5 +64,47 @@ deactivate
 - run these commands in terminal
 ```
 sudo su postgres
-
+createuser root
+createdb nba -O root
+psql
+\password root
+password: root
+enter it again: root
+\q
 ```
+- open up pgAdmin3
+- add new conection (click on electric plug at top left corner)
+- enter in the configuration details
+![PostgreSQL Setup](img/add-server-pgadmin.png)
+
+| Server       | Owner           | Password  |
+| ------------- | ------------- | ----- |
+| nba    | root | root |
+
+
+# PyCharm IDE Setup
+- download and install [PyCharm](https://www.jetbrains.com/pycharm/)
+- you can get a free license from JetBrains if you are a [student](https://www.jetbrains.com/student/)
+- to add your venv as an interpreter follow these [instructions](https://www.jetbrains.com/help/pycharm/2016.1/adding-existing-virtual-environment.html)
+
+![VENV Interpreter Setup](img/pycharm-venv.png)
+
+### PyCharm Debugging
+- click on the dropdown arrow ![Arrow](img/arrow.png) and select edit configurations
+- add a python configuration with the following settings
+
+**For Web Server**
+![Configuration Setup Web](img/web-config.png)
+
+**For Databse Population**
+![Configuration Setup Web](img/populate-config.png)
+
+# Run Project
+- use configurations created in PyCharm for `web.py` and `populate.py`
+- to run, click the green arrow button besides the dropdown used for configuration
+
+![Run](img/run.png)
+
+- to debug, click on the green sun icon
+
+![Debug](img/debug.png)

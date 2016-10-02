@@ -1,7 +1,7 @@
-import pandas as pd
+import pandas
 import requests
 from sqlalchemy import create_engine
-from urls import url as nba_url
+from urls import urls
 
 
 class Populate:
@@ -9,17 +9,24 @@ class Populate:
         self.engine = create_engine('postgresql://root:root@localhost:5432/nba')
 
     def populate(self):
-        frame = get_dataframe_from_response(nba_url)
-        # table does not have to exist on insert
-        frame.to_sql('hustle_overall', con=self.engine, if_exists='append', index=False)
+        # gets players and writes to sql, replacing if table exists
+        players = get_dataframe_from_response(urls[0])
+        players.to_sql('players', con=self.engine, if_exists='replace', index=False)
+
+        # gets teams and writes to sql, replace if table exists (if you want to append to the table, use if_exists='append')
+        teams = get_dataframe_from_response(urls[1])
+        # I only want to store certain columns
+        teams = teams.loc[:, ['TEAM_ID', 'TEAM_NAME']]
+        teams.to_sql('teams', con=self.engine, if_exists='replace', index=False)
 
 def get_dataframe_from_response(url):
     response = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
+    # any response other than 200 is an error
     while response.status_code != 200:
         response = requests.get(url)
     headers = response.json()['resultSets'][0]['headers']
     data = response.json()['resultSets'][0]['rowSet']
-    frame = pd.DataFrame(data, columns=headers)
+    frame = pandas.DataFrame(data, columns=headers)
 
     return frame
 

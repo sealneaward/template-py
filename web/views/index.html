@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>NBA Data Visualizations</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-  <link rel="stylesheet" href="css/override.css"><link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="icon" type="image/png" href="img/nba.png">
-</head>
+{% extends "_base.html" %}
+
+{% block content %}
 <body>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
@@ -19,15 +14,20 @@
       <div class="col s12">
         <div class="card purple">
           <div class="card-content">
-            <span class="card-title white-text">Select a Player</span>
-            <div class="row"><div class="input-field col s6">
-              <select id="team_select">
-              </select>
-              <label class="white-text" for="team_select">Select a Team</label>
-            </div><div class="input-field col s6">
-              <select id="player_select">
-              </select>
-              <label class="white-text" for="player_select">Select a Player</label>
+            <span class="card-title white-text">Select a Team</span>
+            <div class="row">
+              <div class="input-field col s6">
+              <form class="form-horizontal" action="{{ url_for('index') }}" method="POST">
+                    <fieldset>
+                        {{ form.csrf_token }}
+                        {{ form.name() }}
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">
+                                Get Players
+                            </button>
+                        </div>
+                    </fieldset>
+                </form>
             </div>
           </div>
         </div>
@@ -36,49 +36,9 @@
   </div>
   <script>
   $(document).ready(function () {
-    var selectedValue = $('#team_select').val();
-
-    $("#player_select option").each(function () {
-        if ($(this).val() != selectedValue) {
-            $(this).toggle();
-        }
-    });
-
     $('select').material_select();
-});
-
-$('#team_select').on('change', function () {
-    var selectedValue = $('#team_select').val();
-
-    $("#player_select option").each(function () {
-        if ($(this).val() != selectedValue) {
-            $(this).prop('disabled', true);
-        } else {
-            $(this).prop('disabled', false);
-        }
-    });
-
-    $('select').material_select();
-});
-
-$('#player_select').on('change', function () {
-
-
-    var selectedValue = $(this).find('option:selected').attr('id');
-    var playerStats = [{},{}];
-    //get player info from array by player id
-    var player = $.grep(playerStats, function(player){
-       return player.PLAYER_ID == selectedValue;
-    })[0];
-
-    $('#name').val(player.PLAYER_NAME);
-    $('#blocks').val(player.BLK);
-    $('#drfga').val(player.DEF_RIM_FGA);
-    $('#drfgm').val(player.DEF_RIM_FGM);
-    $('#drfgpct').val(player.DEF_RIM_FG_PCT);
-
 });
 </script>
 </div>
 </body>
-</html>
+{% endblock %}

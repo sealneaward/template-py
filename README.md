@@ -11,6 +11,7 @@ Repository to hold SOFE 3700 project template that is python and PostgreSQL db a
 - [Additional Styling](#styling)
 
 # Windows Setup
+- TODO: need to add stuff about adding to paths to ensure exe compat
 - Install git [if not already installed](https://git-scm.com/download/win)
 - Clone project *run in cmd as admin*
 ```
@@ -54,3 +55,24 @@ deactivate
 - add a python configuration with the following settings
 
 ![Configuration Setup](img/configuration.png)
+
+# Linux Setup
+- Install git if not already installed
+```
+sudo apt-get install git
+```
+- setup virtualenvironment in project folder [more documentation](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
+```
+sudo pip install virtualenv virtualenvwrapper
+virtualenv venv
+source venv/bin/activate
+sudo pip install -r requirements.txt
+deactivate
+```
+
+### PostgreSQL Database Setup
+- run these commands in terminal
+```
+sudo su postgres
+
+```

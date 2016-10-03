@@ -18,7 +18,9 @@ git clone https://github.com/sealneaward/template-py
 ```
 - Install [Python 2.7](https://www.python.org/downloads/release/python-2712/)
 - Add Python and Python scripts to path variable, **no spaces**
-![path](/img/path.png)
+
+![path](img/path.PNG)
+
 - Install dependencies *run in cmd as admin in project folder*
 - More documentation on [venv](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
 ```
@@ -35,11 +37,11 @@ deactivate
 - Follow the instruction [here](https://confluence.atlassian.com/display/CONF30/Database+Setup+for+PostgreSQL+on+Windows)
 - Make sure to create a new login user for **user**: *root* with **password**: *root*
 
-![new role](img/create-role-pgadmin.png)
+![new role](img/create-role-pgadmin.PNG)
 
 - **Pay attention to the role settings when creating the role**
 
-![role settings](img/root-role.png)
+![role settings](img/root-role.PNG)
 
 - When creating a database, make sure to create a database with the following info
 
@@ -50,11 +52,11 @@ deactivate
 - open up pgAdmin3
 - add new add new database
 - enter in the configuration details
-![PostgreSQL Setup](img/createdb-pgadmin.png)
+![PostgreSQL Setup](img/createdb-pgadmin.PNG)
 
 - Use the .sql scripts in the db/schema folder to create the tables. Run as queries.
 
-![create tables](img/create-table-pgadmin.png)
+![create tables](img/create-table-pgadmin.PNG)
 
 # Linux Setup
 - Install git if not already installed

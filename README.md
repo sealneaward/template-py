@@ -120,3 +120,6 @@ enter it again: root
 - to debug, click on the green sun icon
 
 ![Debug](img/debug.png)
+
+# Styling
+- I used Materialize.css for this project

@@ -11,7 +11,6 @@ Repository to hold SOFE 3700 project template that is python and PostgreSQL db a
 - [Additional Styling](#styling)
 
 # Windows Setup
-- TODO: need to add stuff about adding to paths to ensure exe compat
 - Install git [if not already installed](https://git-scm.com/download/win)
 - Clone project *run in cmd as admin*
 ```

@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect, jsonify, url_for, request, session
+from flask_restful import Api
 from flask_wtf import Form
 from flask_wtf.csrf import CsrfProtect
 from wtforms import SelectField
@@ -7,6 +8,7 @@ import db.helper as connection
 
 # initalize server
 app = Flask(__name__, template_folder='views', static_folder='public')
+api = Api(app)
 app.config['SECRET_KEY'] = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 CsrfProtect(app)
 
@@ -57,12 +59,13 @@ def stats():
 
     return render_template("stats.html", name=stats[1], blocks=stats[9], drfgm=stats[11], drfga=stats[12], drfgpct=stats[13])
 
-
-@app.route('/api', methods=['POST'])
-def api():
-    player_id = request.form
+# create simple api that takes in id and response with stats of said player
+# ex http://localhost:5000/api/201960
+# TODO add query parameters like http://localhost:5000/api?id=201960
+@app.route('/api/<id>', methods=['GET','POST'])
+def api(id):
+    player_id = id
     stats = db.get_stats(player_id)
-
     return jsonify(stats)
 
 if __name__ == '__main__':

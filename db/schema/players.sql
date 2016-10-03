@@ -18,8 +18,7 @@ CREATE TABLE players
   "DEF_RIM_FGM" bigint,
   "DEF_RIM_FGA" bigint,
   "DEF_RIM_FG_PCT" double precision,
-  CONSTRAINT hustle_overall_pkey PRIMARY KEY ("PLAYER_ID"),
-  FOREIGN KEY ("TEAM_ID") REFERENCES
+  CONSTRAINT hustle_overall_pkey PRIMARY KEY ("PLAYER_ID")
 )
 WITH (
   OIDS=FALSE

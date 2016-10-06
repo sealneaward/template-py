@@ -6,8 +6,6 @@ Repository to hold SOFE 3700 project template that is python and PostgreSQL db a
 - [Linux](#linux-setup)
 - [Pycharm Setup](#pycharm-ide-setup)
 - [Running Project](#run-project)
-- [Testing Project](#testing)
-- [Running Project Without Testing](#without-testing)
 - [Additional Styling](#styling)
 
 # Windows Setup

@@ -63,10 +63,14 @@ sudo apt-get install git
 ```
 - setup virtual environment in project folder [more documentation](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
 ```
+sudo apt install python-pip python-dev build-essential libpq-dev
+sudo apt-get install postgresql pgadmin3
 sudo pip install virtualenv virtualenvwrapper
 virtualenv venv
 source venv/bin/activate
-sudo pip install -r requirements.txt
+pip install -r requirements.txt
+python setup.py build
+python setup.py install
 deactivate
 ```
 
@@ -81,6 +85,7 @@ psql
 password: root
 enter it again: root
 \q
+exit
 ```
 - open up pgAdmin3
 - add new conection (click on electric plug at top left corner)
